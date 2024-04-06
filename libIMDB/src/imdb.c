@@ -3,6 +3,8 @@
 Movie *movies = NULL;
 Actor *actors = NULL;
 
+#pragma region MOVIE_REGION
+
 void add_movie(msgpack_object_str *title, msgpack_object_str *id) {
   Movie *movie = malloc(sizeof(Movie));
   if (movie == NULL) {
@@ -48,6 +50,10 @@ Movie *get_movie_by_id(const char *id) {
   HASH_FIND_STR(movies, id, movie);
   return movie;
 }
+
+#pragma endregion MOVIE_REGION
+
+#pragma region ACTOR_REGION
 
 void load_actors(char *actor_path) {
   FILE *f = fopen(actor_path, "r");
@@ -109,3 +115,5 @@ Actor *get_actor_by_id(const char *id) {
   HASH_FIND_STR(actors, id, actor);
   return actor;
 }
+
+#pragma endregion ACTOR_REGION
