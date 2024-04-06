@@ -10,9 +10,6 @@
 
 #define NUM_ACTORS 13393228
 #define NUM_MOVIES 676520
-#define MAX_TITLE_LENGTH 100
-#define MAX_ID_LENGTH 20
-#define MAX_NAME_LENGTH 100
 
 typedef struct {
   char *title;
@@ -24,12 +21,18 @@ typedef struct {
   const char *id;
   const char *name;
   Movie **movies;
+  uint32_t movie_count;
   UT_hash_handle hh;
 } Actor;
 
+// Movie defs
 void load_movies(char *title_path);
 void add_movie(msgpack_object_str *title, msgpack_object_str *id);
-Movie *get_movie_by_id(char *id);
+Movie *get_movie_by_id(const char *id);
 
-// void load_actors(char *actor_path);
+/// Actor Defs
+void load_actors(char *actor_path);
+void add_actor(msgpack_object_str *name, msgpack_object_str *id,
+               msgpack_object_array *movies);
+Actor *get_actor_by_id(const char *id);
 #endif
