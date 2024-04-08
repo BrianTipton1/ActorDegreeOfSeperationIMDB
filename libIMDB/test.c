@@ -26,10 +26,10 @@ void test_actor_getter() {
   printf("Actor: %s, Id: %s. OKAY\n", actor1->name, actor1->id);
   reset_color();
 
-  Actor *actor2 = get_actor_by_id("nm9993704");
+  Actor *actor2 = get_actor_by_id("nm1453828");
 
   start_red();
-  assert(strcmp(actor2->name, "Wojciech Kolodziej") == 0);
+  assert(strcmp(actor2->name, "An Actor") == 0);
   reset_color();
 
   start_green();
